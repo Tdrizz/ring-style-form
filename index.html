@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your Dream Ring 💍</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to bottom right, #ffe6f0, #fff);
+      color: #4d0039;
+      padding: 20px;
+      margin: 0;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2rem;
+      text-align: center;
+      color: #d63384;
+      margin-bottom: 20px;
+    }
+
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+
+    label {
+      display: block;
+      margin-top: 16px;
+      font-weight: 600;
+    }
+
+    select, input[type="text"], textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 6px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      background-color: #fff6fa;
+    }
+
+    textarea::placeholder, input::placeholder {
+      font-style: italic;
+      color: #999;
+    }
+
+    .heart-divider {
+      text-align: center;
+      font-size: 1.5rem;
+      margin: 20px 0;
+      color: #ff69b4;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    button {
+      width: 100%;
+      margin-top: 24px;
+      background-color: #ff66a5;
+      color: white;
+      border: none;
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 10px rgba(255, 105, 180, 0.4);
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #e05591;
+    }
+
+    @media (min-width: 500px) {
+      body {
+        max-width: 420px;
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Your Dream Ring 💍</h1>
+  <div class="heart-divider">💗💗💗</div>
+
+  <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+    
+    <label for="shape">Top 2 Favorite Stone Shapes 💎:</label>
+    <select name="shape" id="shape" multiple>
+      <option value="Round">Round</option>
+      <option value="Oval">Oval</option>
+      <option value="Cushion">Cushion</option>
+      <option value="Emerald Cut">Emerald Cut</option>
+      <option value="Princess">Princess (square)</option>
+      <option value="Pear">Pear</option>
+      <option value="Marquise">Marquise</option>
+      <option value="Asscher">Asscher</option>
+      <option value="Heart">Heart ❤️</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <label>Stone Style ✨:</label>
+    <select name="stone_style">
+      <option value="Solitaire">Simple solitaire</option>
+      <option value="Side/Halo">Halo or side stones (sparkle queen!)</option>
+      <option value="No preference">Surprise me!</option>
+    </select>
+
+    <label>Metal Vibe 💫:</label>
+    <select name="metal">
+      <option value="Yellow gold">Yellow gold</option>
+      <option value="White gold">White gold</option>
+      <option value="Rose gold">Rose gold</option>
+      <option value="No preference">Whichever you think is cutest 💕</option>
+    </select>
+
+    <label>Style in 1–2 words 📝:</label>
+    <input type="text" name="style_words" placeholder="e.g. dainty, bold, vintage" />
+
+    <label>Anything to avoid? 🚫:</label>
+    <textarea name="dont_want" rows="3" placeholder="Dealbreakers, no-gos, things that aren’t you"></textarea>
+
+    <div class="heart-divider">💖💖💖</div>
+    <button type="submit">Send to your Love 💌</button>
+  </form>
+
+</body>
+</html>
