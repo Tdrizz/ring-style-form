@@ -6,10 +6,14 @@
   <title>Your Dream Ring 💍</title>
   <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
   <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Quicksand', sans-serif;
-      background: linear-gradient(to bottom right, #ffe6f0, #fff);
-      color: #4d0039;
+      background: linear-gradient(to bottom right, #d1f7ff, #fff6f0);
+      color: #3d2b1f;
       padding: 20px;
       margin: 0;
       overflow-x: hidden;
@@ -21,7 +25,7 @@
       font-family: 'Pacifico', cursive;
       font-size: 2rem;
       text-align: center;
-      color: #d63384;
+      color: #ff69b4;
       margin-bottom: 20px;
       z-index: 1;
     }
@@ -43,15 +47,17 @@
       font-size: 0.95rem;
     }
 
+    .input-wrapper {
+      margin-top: 6px;
+    }
+
     input[type="text"], textarea, select {
       width: 100%;
       padding: 10px;
-      margin-top: 6px;
       border-radius: 10px;
       border: 1px solid #ccc;
       font-size: 0.95rem;
-      background-color: #fff6fa;
-      box-sizing: border-box;
+      background-color: #fefcf9;
     }
 
     textarea::placeholder, input::placeholder {
@@ -67,7 +73,7 @@
     }
 
     .checkbox-group label {
-      background: #fff0f5;
+      background: #fffaf2;
       padding: 8px 12px;
       border-radius: 10px;
       border: 1px solid #ddd;
@@ -80,7 +86,7 @@
     button {
       width: 100%;
       margin-top: 28px;
-      background-color: #ff66a5;
+      background-color: #00c6a7;
       color: white;
       border: none;
       padding: 14px;
@@ -88,12 +94,12 @@
       font-size: 1.1rem;
       font-weight: bold;
       letter-spacing: 0.5px;
-      box-shadow: 0 4px 10px rgba(255, 105, 180, 0.4);
+      box-shadow: 0 4px 10px rgba(0, 198, 167, 0.3);
       transition: background 0.3s;
     }
 
     button:hover {
-      background-color: #e05591;
+      background-color: #00a890;
     }
 
     .footer-hearts {
@@ -101,50 +107,6 @@
       margin-top: 24px;
       margin-bottom: 60px;
       font-size: 1.5rem;
-    }
-
-    .heart-burst {
-      position: absolute;
-      width: 18px;
-      height: 18px;
-      background: pink;
-      opacity: 1;
-      transform: rotate(45deg);
-      border-radius: 50% 50% 0 0;
-      pointer-events: none;
-      animation: heartBurst 1.2s ease-out forwards;
-      z-index: 1000;
-    }
-
-    .heart-burst::before,
-    .heart-burst::after {
-      content: "";
-      position: absolute;
-      width: 18px;
-      height: 18px;
-      background: pink;
-      border-radius: 50%;
-    }
-
-    .heart-burst::before {
-      top: -9px;
-      left: 0;
-    }
-
-    .heart-burst::after {
-      left: -9px;
-      top: 0;
-    }
-
-    @keyframes heartBurst {
-      from {
-        transform: translate(0, 0) scale(1) rotate(45deg);
-        opacity: 1;
-      }
-      to {
-        transform: translate(var(--x), var(--y)) scale(1.4) rotate(45deg);
-        opacity: 0;
-      }
     }
 
     @media (min-width: 500px) {
@@ -157,7 +119,7 @@
 </head>
 <body>
 
-  <h1>Your Dream Ring 💖</h1>
+  <h1>Your Dream Ring 💖🌺</h1>
 
   <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
 
@@ -176,45 +138,38 @@
       <label><input type="checkbox" name="shape" value="Other"> Other</label>
     </div>
 
-    <label>Stone Style ✨:</label>
-    <select name="stone_style">
-      <option value="Solitaire">Simple solitaire</option>
-      <option value="Side/Halo">Halo or side stones</option>
-      <option value="No preference">Surprise me!</option>
-    </select>
+    <label>Stone Style ✨ (Island energy or city sparkle?):</label>
+    <div class="input-wrapper">
+      <select name="stone_style">
+        <option value="Solitaire">Simple solitaire</option>
+        <option value="Side/Halo">Halo or side stones</option>
+        <option value="No preference">Surprise me 🌈</option>
+      </select>
+    </div>
 
-    <label>Metal Vibe 💫:</label>
-    <select name="metal">
-      <option value="Yellow gold">Yellow gold</option>
-      <option value="White gold">White gold</option>
-      <option value="Rose gold">Rose gold</option>
-      <option value="No preference">Whichever you think is cutest 💕</option>
-    </select>
+    <label>Metal Vibe 💫 (Golden sand or ocean silver?):</label>
+    <div class="input-wrapper">
+      <select name="metal">
+        <option value="Yellow gold">Yellow gold ☀️</option>
+        <option value="White gold">White gold 🌊</option>
+        <option value="Rose gold">Rose gold 🌺</option>
+        <option value="No preference">Whichever is cutest 🐚</option>
+      </select>
+    </div>
 
     <label>Style in 1–2 words 📝:</label>
-    <input type="text" name="style_words" placeholder="e.g. dainty, bold, vintage" />
+    <div class="input-wrapper">
+      <input type="text" name="style_words" placeholder="e.g. dainty, beachy, vintage" />
+    </div>
 
     <label>Anything to avoid? 🚫:</label>
-    <textarea name="dont_want" rows="3" placeholder="Dealbreakers, no-gos, things that aren’t you"></textarea>
+    <div class="input-wrapper">
+      <textarea name="dont_want" rows="3" placeholder="Dealbreakers, no-gos, not your vibe 🌧️"></textarea>
+    </div>
 
-    <div class="footer-hearts">💖💖💖</div>
+    <div class="footer-hearts">🌴🐚🌊</div>
     <button type="submit">Send to your Love 💌</button>
   </form>
-
-  <script>
-    document.querySelector("form").addEventListener("submit", function(e) {
-      for (let i = 0; i < 18; i++) {
-        const heart = document.createElement("div");
-        heart.className = "heart-burst";
-        heart.style.left = "50%";
-        heart.style.top = "50%";
-        heart.style.setProperty('--x', `${(Math.random() - 0.5) * 250}px`);
-        heart.style.setProperty('--y', `${(Math.random() - 0.5) * 250}px`);
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 1600);
-      }
-    });
-  </script>
 
 </body>
 </html>
