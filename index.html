@@ -27,7 +27,6 @@
       text-align: center;
       color: #ff69b4;
       margin-bottom: 20px;
-      z-index: 1;
     }
 
     form {
@@ -36,7 +35,6 @@
       border-radius: 16px;
       box-shadow: 0 4px 16px rgba(0,0,0,0.1);
       position: relative;
-      z-index: 1;
       padding-bottom: 80px;
     }
 
@@ -51,7 +49,7 @@
       margin-top: 6px;
     }
 
-    input[type="text"], textarea, select {
+    input[type="text"], textarea, select, input[type="file"] {
       width: 100%;
       padding: 10px;
       border-radius: 10px;
@@ -158,7 +156,7 @@
 
   <h1>Your Dream Ring 💖🌺</h1>
 
-  <form id="ringForm" action="https://formspree.io/f/mblkzobp" method="POST">
+  <form id="ringForm" action="https://formspree.io/f/mblkzobp" method="POST" enctype="multipart/form-data">
     <label>Top 2 Favorite Stone Shapes 💎:</label>
     <small style="font-size: 0.85rem; color: #888;">(Pick 1–2 shapes you love most!)</small>
     <div class="checkbox-group">
@@ -174,14 +172,14 @@
     </div>
 
     <label>How do you want the stone to stand out? 💫</label>
-<small style="font-size: 0.85rem; color: #888;">(You can pick what feels prettiest — or say surprise me!)</small>
-<div class="input-wrapper">
-  <select name="stone_style">
-    <option value="Solitaire">Just one beautiful stone (classic + clean)</option>
-    <option value="Halo or Side Stones">With sparkle around it or on the band ✨</option>
-    <option value="No preference">Surprise me 💎</option>
-  </select>
-</div>
+    <small style="font-size: 0.85rem; color: #888;">(Pick what feels prettiest — or say surprise me!)</small>
+    <div class="input-wrapper">
+      <select name="stone_style">
+        <option value="Solitaire">Just one beautiful stone (classic + clean)</option>
+        <option value="Halo or Side Stones">With sparkle around it or on the band ✨</option>
+        <option value="No preference">Surprise me 💎</option>
+      </select>
+    </div>
 
     <label>Metal Vibe 💫 (Golden sand or ocean silver?):</label>
     <div class="input-wrapper">
@@ -203,13 +201,24 @@
       <textarea name="dont_want" rows="3" placeholder="Dealbreakers, no-gos, not your vibe 🌧️"></textarea>
     </div>
 
-    <label>Anything else you want me to know? 🌈</label>
+    <label>Do you know your ring size? 📏 (Optional)</label>
+    <div class="input-wrapper">
+      <input type="text" name="ring_size" placeholder="If you know it, drop it here!" />
+    </div>
+
+    <label>Want to share inspo pics? 📷 (Optional)</label>
+    <div class="input-wrapper">
+      <input type="file" name="inspo_photos" accept="image/png, image/jpeg" multiple />
+      <small style="font-size:0.85rem;color:#888;">Upload up to 3 images </small>
+    </div>
+
+    <label>Anything else you want me to know? </label>
     <div class="input-wrapper">
       <textarea name="extra_notes" rows="3" placeholder="Anything you forgot to mention, ideas, dreams... ✨"></textarea>
     </div>
 
     <div class="footer-hearts">🌴🐚🌊</div>
-    <button type="submit">Send to Pookie 💌</button>
+    <button type="submit">Send to your Love 💌</button>
   </form>
 
   <!-- Sweet popup -->
@@ -227,7 +236,6 @@
     form.addEventListener('submit', function(e) {
       e.preventDefault();
 
-      // Send form data
       const formData = new FormData(form);
       fetch(form.action, {
         method: 'POST',
