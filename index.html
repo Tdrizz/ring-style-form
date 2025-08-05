@@ -14,7 +14,7 @@
       margin: 0;
       overflow-x: hidden;
       position: relative;
-      padding-bottom: 40px; /* prevent overlap */
+      padding-bottom: 40px;
     }
 
     h1 {
@@ -33,7 +33,7 @@
       box-shadow: 0 4px 16px rgba(0,0,0,0.1);
       position: relative;
       z-index: 1;
-      padding-bottom: 80px; /* extra spacing to avoid overlap */
+      padding-bottom: 80px;
     }
 
     label {
@@ -45,12 +45,13 @@
 
     input[type="text"], textarea, select {
       width: 100%;
-      padding: 12px;
+      padding: 10px;
       margin-top: 6px;
       border-radius: 10px;
       border: 1px solid #ccc;
-      font-size: 1rem;
+      font-size: 0.95rem;
       background-color: #fff6fa;
+      box-sizing: border-box;
     }
 
     textarea::placeholder, input::placeholder {
@@ -102,45 +103,46 @@
       font-size: 1.5rem;
     }
 
-    .heart {
+    .heart-burst {
       position: absolute;
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
       background: pink;
-      opacity: 0.7;
-      animation: floatUp 10s linear infinite;
+      opacity: 1;
       transform: rotate(45deg);
       border-radius: 50% 50% 0 0;
       pointer-events: none;
+      animation: heartBurst 1.2s ease-out forwards;
+      z-index: 1000;
     }
 
-    .heart::before,
-    .heart::after {
+    .heart-burst::before,
+    .heart-burst::after {
       content: "";
       position: absolute;
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
       background: pink;
       border-radius: 50%;
     }
 
-    .heart::before {
-      top: -10px;
+    .heart-burst::before {
+      top: -9px;
       left: 0;
     }
 
-    .heart::after {
-      left: -10px;
+    .heart-burst::after {
+      left: -9px;
       top: 0;
     }
 
-    @keyframes floatUp {
-      0% {
-        transform: translateY(0) scale(1) rotate(45deg);
-        opacity: 0.8;
+    @keyframes heartBurst {
+      from {
+        transform: translate(0, 0) scale(1) rotate(45deg);
+        opacity: 1;
       }
-      100% {
-        transform: translateY(-120vh) scale(1.5) rotate(45deg);
+      to {
+        transform: translate(var(--x), var(--y)) scale(1.4) rotate(45deg);
         opacity: 0;
       }
     }
@@ -199,17 +201,19 @@
     <button type="submit">Send to your Love 💌</button>
   </form>
 
-  <!-- Floating Hearts Script -->
   <script>
-    const numHearts = 15;
-    for (let i = 0; i < numHearts; i++) {
-      const heart = document.createElement('div');
-      heart.classList.add('heart');
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDelay = Math.random() * 10 + "s";
-      heart.style.animationDuration = (8 + Math.random() * 5) + "s";
-      document.body.appendChild(heart);
-    }
+    document.querySelector("form").addEventListener("submit", function(e) {
+      for (let i = 0; i < 18; i++) {
+        const heart = document.createElement("div");
+        heart.className = "heart-burst";
+        heart.style.left = "50%";
+        heart.style.top = "50%";
+        heart.style.setProperty('--x', `${(Math.random() - 0.5) * 250}px`);
+        heart.style.setProperty('--y', `${(Math.random() - 0.5) * 250}px`);
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 1600);
+      }
+    });
   </script>
 
 </body>
