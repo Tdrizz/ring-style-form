@@ -12,12 +12,8 @@
       color: #4d0039;
       padding: 20px;
       margin: 0;
-      animation: fadeIn 1s ease-in-out;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      overflow-x: hidden;
+      position: relative;
     }
 
     h1 {
@@ -26,6 +22,7 @@
       text-align: center;
       color: #d63384;
       margin-bottom: 20px;
+      z-index: 1;
     }
 
     form {
@@ -33,17 +30,20 @@
       padding: 20px;
       border-radius: 16px;
       box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 1;
     }
 
     label {
       display: block;
       margin-top: 16px;
       font-weight: 600;
+      font-size: 0.95rem;
     }
 
     select, input[type="text"], textarea {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       margin-top: 6px;
       border-radius: 10px;
       border: 1px solid #ccc;
@@ -56,22 +56,9 @@
       color: #999;
     }
 
-    .heart-divider {
-      text-align: center;
-      font-size: 1.5rem;
-      margin: 20px 0;
-      color: #ff69b4;
-      animation: pulse 2s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-    }
-
     button {
       width: 100%;
-      margin-top: 24px;
+      margin-top: 28px;
       background-color: #ff66a5;
       color: white;
       border: none;
@@ -88,6 +75,49 @@
       background-color: #e05591;
     }
 
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      opacity: 0.7;
+      animation: floatUp 10s linear infinite;
+      transform: rotate(45deg);
+      border-radius: 50% 50% 0 0;
+      pointer-events: none;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: pink;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1) rotate(45deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(-120vh) scale(1.5) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
     @media (min-width: 500px) {
       body {
         max-width: 420px;
@@ -98,30 +128,28 @@
 </head>
 <body>
 
-  <h1>Your Dream Ring 💍</h1>
-  <div class="heart-divider">💗💗💗</div>
+  <h1>Your Dream Ring 💖</h1>
 
   <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-    
-    <label>Top 2 Favorite Stone Shapes 💎:</label>
-<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
-  <label><input type="checkbox" name="shape" value="Round" /> Round</label>
-  <label><input type="checkbox" name="shape" value="Oval" /> Oval</label>
-  <label><input type="checkbox" name="shape" value="Cushion" /> Cushion</label>
-  <label><input type="checkbox" name="shape" value="Emerald Cut" /> Emerald Cut</label>
-  <label><input type="checkbox" name="shape" value="Princess" /> Princess</label>
-  <label><input type="checkbox" name="shape" value="Pear" /> Pear</label>
-  <label><input type="checkbox" name="shape" value="Marquise" /> Marquise</label>
-  <label><input type="checkbox" name="shape" value="Asscher" /> Asscher</label>
-  <label><input type="checkbox" name="shape" value="Heart" /> Heart ❤️</label>
-  <label><input type="checkbox" name="shape" value="Other" /> Other</label>
-</div>
+    <label for="shape">Top 2 Favorite Stone Shapes 💎:</label>
+    <select name="shape" id="shape" multiple>
+      <option value="Round">Round</option>
+      <option value="Oval">Oval</option>
+      <option value="Cushion">Cushion</option>
+      <option value="Emerald Cut">Emerald Cut</option>
+      <option value="Princess">Princess (square)</option>
+      <option value="Pear">Pear</option>
+      <option value="Marquise">Marquise</option>
+      <option value="Asscher">Asscher</option>
+      <option value="Heart">Heart ❤️</option>
+      <option value="Other">Other</option>
+    </select>
 
     <label>Stone Style ✨:</label>
     <select name="stone_style">
-      <option value="Solitaire">Simple solitaire</option>
-      <option value="Side/Halo">Halo or side stones (sparkle queen!)</option>
-      <option value="No preference">Surprise me!</option>
+      <option value="Solitaire">Solitaire</option>
+      <option value="Side/Halo">Halo or side stones</option>
+      <option value="No preference">No preference</option>
     </select>
 
     <label>Metal Vibe 💫:</label>
@@ -129,18 +157,30 @@
       <option value="Yellow gold">Yellow gold</option>
       <option value="White gold">White gold</option>
       <option value="Rose gold">Rose gold</option>
-      <option value="No preference">Whichever you think is cutest 💕</option>
+      <option value="No preference">Surprise me!</option>
     </select>
 
-    <label>Style in 1–2 words 📝:</label>
+    <label>Your style in 1–2 words 📝:</label>
     <input type="text" name="style_words" placeholder="e.g. dainty, bold, vintage" />
 
     <label>Anything to avoid? 🚫:</label>
     <textarea name="dont_want" rows="3" placeholder="Dealbreakers, no-gos, things that aren’t you"></textarea>
 
-    <div class="heart-divider">💖💖💖</div>
     <button type="submit">Send to your Love 💌</button>
   </form>
+
+  <!-- Floating Hearts -->
+  <script>
+    const numHearts = 15;
+    for (let i = 0; i < numHearts; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDelay = Math.random() * 10 + "s";
+      heart.style.animationDuration = (8 + Math.random() * 5) + "s";
+      document.body.appendChild(heart);
+    }
+  </script>
 
 </body>
 </html>
