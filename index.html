@@ -14,6 +14,7 @@
       margin: 0;
       overflow-x: hidden;
       position: relative;
+      padding-bottom: 40px; /* prevent overlap */
     }
 
     h1 {
@@ -32,6 +33,7 @@
       box-shadow: 0 4px 16px rgba(0,0,0,0.1);
       position: relative;
       z-index: 1;
+      padding-bottom: 80px; /* extra spacing to avoid overlap */
     }
 
     label {
@@ -41,7 +43,7 @@
       font-size: 0.95rem;
     }
 
-    select, input[type="text"], textarea {
+    input[type="text"], textarea, select {
       width: 100%;
       padding: 12px;
       margin-top: 6px;
@@ -54,6 +56,24 @@
     textarea::placeholder, input::placeholder {
       font-style: italic;
       color: #999;
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .checkbox-group label {
+      background: #fff0f5;
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
 
     button {
@@ -73,6 +93,13 @@
 
     button:hover {
       background-color: #e05591;
+    }
+
+    .footer-hearts {
+      text-align: center;
+      margin-top: 24px;
+      margin-bottom: 60px;
+      font-size: 1.5rem;
     }
 
     .heart {
@@ -131,25 +158,27 @@
   <h1>Your Dream Ring 💖</h1>
 
   <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-    <label for="shape">Top 2 Favorite Stone Shapes 💎:</label>
-    <select name="shape" id="shape" multiple>
-      <option value="Round">Round</option>
-      <option value="Oval">Oval</option>
-      <option value="Cushion">Cushion</option>
-      <option value="Emerald Cut">Emerald Cut</option>
-      <option value="Princess">Princess (square)</option>
-      <option value="Pear">Pear</option>
-      <option value="Marquise">Marquise</option>
-      <option value="Asscher">Asscher</option>
-      <option value="Heart">Heart ❤️</option>
-      <option value="Other">Other</option>
-    </select>
+
+    <label>Top 2 Favorite Stone Shapes 💎:</label>
+    <small style="font-size: 0.85rem; color: #888;">(Pick 1–2 shapes you love most!)</small>
+    <div class="checkbox-group">
+      <label><input type="checkbox" name="shape" value="Round"> Round</label>
+      <label><input type="checkbox" name="shape" value="Oval"> Oval</label>
+      <label><input type="checkbox" name="shape" value="Cushion"> Cushion</label>
+      <label><input type="checkbox" name="shape" value="Emerald Cut"> Emerald Cut</label>
+      <label><input type="checkbox" name="shape" value="Princess"> Princess</label>
+      <label><input type="checkbox" name="shape" value="Pear"> Pear</label>
+      <label><input type="checkbox" name="shape" value="Marquise"> Marquise</label>
+      <label><input type="checkbox" name="shape" value="Asscher"> Asscher</label>
+      <label><input type="checkbox" name="shape" value="Heart"> Heart ❤️</label>
+      <label><input type="checkbox" name="shape" value="Other"> Other</label>
+    </div>
 
     <label>Stone Style ✨:</label>
     <select name="stone_style">
-      <option value="Solitaire">Solitaire</option>
+      <option value="Solitaire">Simple solitaire</option>
       <option value="Side/Halo">Halo or side stones</option>
-      <option value="No preference">No preference</option>
+      <option value="No preference">Surprise me!</option>
     </select>
 
     <label>Metal Vibe 💫:</label>
@@ -157,19 +186,20 @@
       <option value="Yellow gold">Yellow gold</option>
       <option value="White gold">White gold</option>
       <option value="Rose gold">Rose gold</option>
-      <option value="No preference">Surprise me!</option>
+      <option value="No preference">Whichever you think is cutest 💕</option>
     </select>
 
-    <label>Your style in 1–2 words 📝:</label>
+    <label>Style in 1–2 words 📝:</label>
     <input type="text" name="style_words" placeholder="e.g. dainty, bold, vintage" />
 
     <label>Anything to avoid? 🚫:</label>
     <textarea name="dont_want" rows="3" placeholder="Dealbreakers, no-gos, things that aren’t you"></textarea>
 
+    <div class="footer-hearts">💖💖💖</div>
     <button type="submit">Send to your Love 💌</button>
   </form>
 
-  <!-- Floating Hearts -->
+  <!-- Floating Hearts Script -->
   <script>
     const numHearts = 15;
     for (let i = 0; i < numHearts; i++) {
