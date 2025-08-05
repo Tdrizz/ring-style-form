@@ -103,19 +103,19 @@
 
   <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
     
-    <label for="shape">Top 2 Favorite Stone Shapes 💎:</label>
-    <select name="shape" id="shape" multiple>
-      <option value="Round">Round</option>
-      <option value="Oval">Oval</option>
-      <option value="Cushion">Cushion</option>
-      <option value="Emerald Cut">Emerald Cut</option>
-      <option value="Princess">Princess (square)</option>
-      <option value="Pear">Pear</option>
-      <option value="Marquise">Marquise</option>
-      <option value="Asscher">Asscher</option>
-      <option value="Heart">Heart ❤️</option>
-      <option value="Other">Other</option>
-    </select>
+    <label>Top 2 Favorite Stone Shapes 💎:</label>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px;">
+  <label><input type="checkbox" name="shape" value="Round" /> Round</label>
+  <label><input type="checkbox" name="shape" value="Oval" /> Oval</label>
+  <label><input type="checkbox" name="shape" value="Cushion" /> Cushion</label>
+  <label><input type="checkbox" name="shape" value="Emerald Cut" /> Emerald Cut</label>
+  <label><input type="checkbox" name="shape" value="Princess" /> Princess</label>
+  <label><input type="checkbox" name="shape" value="Pear" /> Pear</label>
+  <label><input type="checkbox" name="shape" value="Marquise" /> Marquise</label>
+  <label><input type="checkbox" name="shape" value="Asscher" /> Asscher</label>
+  <label><input type="checkbox" name="shape" value="Heart" /> Heart ❤️</label>
+  <label><input type="checkbox" name="shape" value="Other" /> Other</label>
+</div>
 
     <label>Stone Style ✨:</label>
     <select name="stone_style">
